@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: caflamand
+  description: Deploy ugly-map project.
+  company: DreamHack Canada Inc.
+  license: WTFPL
+  min_ansible_version: 2.4
+  platforms:
+    - name: Debian
+      versions:
+        - 9
+  galaxy_tags: []
+  dependencies:
+    - src: geerlingguy.pip
+    - src: geerlingguy.docker

@@ -1,0 +1,47 @@
+---
+- name: Install git
+  package:
+    name: ['git']
+
+- name: Install docker
+  pip:
+    name: docker-py
+
+- name: test2
+  shell: pip list
+  register: tt
+
+- name: h
+  debug:
+    msg: "{{ tt }}"
+
+- name: Clone Ugly-Map repo
+  git:
+    repo: 'https://{{ um_gitlab_user | urlencode }}:{{ um_gitlab_token }}@gitlab.com/dreamhack/ugly-map.git'
+    dest: "{{ um_location }}"
+    accept_hostkey: true
+    version: master
+
+- name: Template config file
+  template:
+    src: production.yml.j2
+    dest: "{{ um_location }}/config/production.yml"
+
+- name: pull an image
+  docker_image:
+    name: pacur/centos-7
+
+- name: Build docker image
+  docker_image:
+    name: dhmtl/ugly-map:latest
+    path: "{{ um_location }}"
+
+
+- name: Start container
+  docker_container:
+    name: dhmtl/ugly-map
+    state: present
+    image: dhmtl/ugly-map
+    command: npm start
+    exposed_ports:
+      "{{ um_node_listening_port }}"

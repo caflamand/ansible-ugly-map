@@ -1,0 +1,9 @@
+---
+# All your roles default values.
+um_gitlab_user: 'gitlab+deploy-token-89263'
+um_gitlab_token: 'ec6GhJ57E-RxXczxXPsm'
+
+um_node_listening_port: 3000
+um_prometheus_url: http://10.0.99.28:9000
+
+um_location: /opt/ugly-map

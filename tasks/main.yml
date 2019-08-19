@@ -17,14 +17,21 @@
 
 - name: Build docker image
   docker_image:
-    name: dhmtl/ugly-map:latest
-    path: "{{ um_location }}"
+    build:
+      path: "{{ um_location }}"
+      pull: false
+    name: ugly-map
+    tag: latest
+    source: build
 
 - name: Start container
   docker_container:
-    name: dhmtl/ugly-map
-    state: present
-    image: dhmtl/ugly-map
+    name: ugly-map
+    image: ugly-map
+    hostname: ugly-map
+    recreate: true
+    state: started
     command: npm start
     exposed_ports:
       "{{ um_node_listening_port }}"
+  changed_when: false

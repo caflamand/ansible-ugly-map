@@ -1,19 +1,7 @@
 ---
 - name: Install git
   package:
-    name: ['git']
-
-- name: Install docker
-  pip:
-    name: docker-py
-
-- name: test2
-  shell: pip list
-  register: tt
-
-- name: h
-  debug:
-    msg: "{{ tt }}"
+    name: 'git'
 
 - name: Clone Ugly-Map repo
   git:
@@ -27,15 +15,10 @@
     src: production.yml.j2
     dest: "{{ um_location }}/config/production.yml"
 
-- name: pull an image
-  docker_image:
-    name: pacur/centos-7
-
 - name: Build docker image
   docker_image:
     name: dhmtl/ugly-map:latest
     path: "{{ um_location }}"
-
 
 - name: Start container
   docker_container:

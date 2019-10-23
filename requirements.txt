@@ -1,4 +1,4 @@
-ansible==2.7.11
+ansible>=2.8
 ansible-lint==4.1.0
 anyconfig==0.9.7
 arrow==0.14.2
@@ -26,7 +26,7 @@ git-url-parse==1.2.2
 idna==2.7
 importlib-metadata==0.18
 ipaddress==1.0.22
-Jinja2==2.10
+Jinja2>=2.10
 jinja2-time==0.2.0
 MarkupSafe==1.1.1
 mccabe==0.6.1
@@ -53,7 +53,7 @@ pyparsing==2.4.0
 pytest==5.0.0
 python-dateutil==2.8.0
 python-gilt==1.2.1
-PyYAML==3.13
+PyYAML>==3.13
 requests==2.22.0
 ruamel.yaml==0.15.97
 sh==1.12.14
